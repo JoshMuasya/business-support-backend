@@ -19,6 +19,7 @@ from django.urls import path, re_path
 
 from auth import views
 from customer.views import CustomerCreateView, CustomerRetrieveUpdateDestroyView
+from payments.views import PaymentCreateView, PaymentRetrieveUpdateDestroyView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -27,4 +28,6 @@ urlpatterns = [
     re_path('test_token', views.test_token),
     path('customer/', CustomerCreateView.as_view(), name = 'customer-create'),
     path('customer/<int:pk>/', CustomerRetrieveUpdateDestroyView.as_view(), name = 'customer-retrieve-update-destroy'),
+    path('payment/', PaymentCreateView.as_view(), name = 'payment-create'),
+    path('payment/<int:pk>/', PaymentRetrieveUpdateDestroyView.as_view(), name = 'payment-retrieve-update-destroy'),
 ]
