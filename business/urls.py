@@ -20,6 +20,8 @@ from django.urls import path, re_path
 from auth import views
 from customer.views import CustomerCreateView, CustomerRetrieveUpdateDestroyView
 from payments.views import PaymentCreateView, PaymentRetrieveUpdateDestroyView
+from feenotes.views import FeenoteCreateView, FeenoteRetrieveUpdateDestroyView
+from receipts.views import ReceiptCreateView, ReceiptRetrieveUpdateDestroyView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -30,4 +32,8 @@ urlpatterns = [
     path('customer/<int:pk>/', CustomerRetrieveUpdateDestroyView.as_view(), name = 'customer-retrieve-update-destroy'),
     path('payment/', PaymentCreateView.as_view(), name = 'payment-create'),
     path('payment/<int:pk>/', PaymentRetrieveUpdateDestroyView.as_view(), name = 'payment-retrieve-update-destroy'),
+    re_path(r'^feenote/$', FeenoteCreateView.as_view(), name='feenote-create'),
+    re_path(r'^feenote/(?P<pk>\d+)/$', FeenoteRetrieveUpdateDestroyView.as_view(), name='feenote-retrieve-update-destroy'),
+    path('receipt/', ReceiptCreateView.as_view(), name = 'receipt-create'),
+    path('receipt/<int:pk>/', ReceiptRetrieveUpdateDestroyView.as_view(), name = 'receipt-retrieve-update-destroy'),
 ]
